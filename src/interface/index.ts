@@ -18,6 +18,10 @@ export interface Pokemon {
       url: string
     }
   }[]
+  species: {
+    name: string
+    url: string
+  }
 }
 
 export interface PokemonListResponse {
@@ -37,30 +41,22 @@ export interface PokemonListWithDetails {
   results: Pokemon[]
 }
 
-export interface PokemonType {
-  name: string
-  url: string
-}
-
-export interface PokemonTypeResponse {
-  count: number
-  results: PokemonType[]
-}
-
-export interface PokemonTypeDetail {
+export interface PokemonSpecies {
   id: number
   name: string
-  color: {
-    name: string
+  evolution_chain: {
     url: string
   }
 }
 
-export interface TypeColorMap {
-  [key: string]: {
-    bg: string
-    text: string
-    border: string
-    hex?: string
+export interface EvolutionChain {
+  chain: EvolutionDetail
+}
+
+export interface EvolutionDetail {
+  species: {
+    name: string
+    url: string
   }
+  evolves_to: EvolutionDetail[]
 }
