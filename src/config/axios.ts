@@ -1,10 +1,5 @@
 import axios, { type AxiosRequestConfig } from 'axios'
 
-export type ApiError = {
-  message: string
-  status: number
-}
-
 const api = axios.create({
   baseURL: 'https://pokeapi.co/api/v2',
   headers: {
@@ -19,19 +14,18 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => response.data,
-  (error) =>
-    Promise.reject({
-      message: error.response?.data?.message || 'An error occurred',
-      status: error.response?.status || 500,
-    })
+  (error) => {
+    console.error(error)
+    // return Promise.reject(error)
+    // return Promise.reject({ error: error.message, status: error.response?.status })
+    
+    return null
+  }
 )
 
-const axiosRequest = <T>(
-  options: AxiosRequestConfig
-): Promise<readonly [T | null, ApiError | null]> =>
-  api(options)
-    .then((data) => [data as T, null] as const)
-    .catch((error: ApiError) => [null, error] as const)
+const axiosRequest = <T>(config: AxiosRequestConfig): Promise<T> =>
+  api(config).then((data) => data as T)
 
+// api(config).then((data) => [data as T, null] as const).catch((error) => [null, error] as const)
 export default axiosRequest
 
