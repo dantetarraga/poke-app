@@ -1,2 +1,5 @@
 export { default as PokemonCard } from './PokemonCard'
 export { default as PokemonList } from './PokemonList'
+export { default as Skeleton } from './Skeleton'
+export { default as Modal } from './Modal'
+export { default as TypeBadge } from './TypeBadge'
