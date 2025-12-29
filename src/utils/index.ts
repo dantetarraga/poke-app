@@ -112,3 +112,6 @@ export const typeColorsMap: Record<string, TypeColorConfig> = {
   }
 }
 
+export const formatNumber = (number: number): string => String(number).padStart(3, '0')
+
+export const delay = (ms: number): Promise<void> => new Promise(resolve => setTimeout(resolve, ms))
