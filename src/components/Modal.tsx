@@ -26,7 +26,7 @@ const Modal = ({ children, isOpen, onClose, title }: Props) => {
           
           <button
             onClick={onClose}
-            className={`ml-auto p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 group`}
+            className={`ml-auto p-2 hover:bg-gray-100 rounded-full transition-colors duration-200 group cursor-pointer`}
           >
             <svg
               className="w-5 h-5 text-gray-500 group-hover:text-gray-900 transition-colors"
